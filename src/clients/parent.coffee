@@ -78,5 +78,8 @@ class ParentClient extends BaseLogging
   onPreview: () ->
     @log new Exception 'onPreview: Not implemented'
 
-  onProgress: (current, total) ->
+  onProgress: (data) ->
     @log new Exception 'onProgress: Not implemented'
+
+  onConfigProgress: (data) ->
+    @log new Exception 'onConfigProgress: Not implemented'
