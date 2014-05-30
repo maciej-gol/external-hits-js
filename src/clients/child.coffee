@@ -51,7 +51,6 @@ class ChildClient extends BaseLogging
 
     @request options, (err, response)->
       return callback err, response if err
-      response.data = (new MediaObject mo for mo in response.data)
       callback null, response
 
   saveData: (data, options, callback) ->
@@ -128,10 +127,8 @@ class ChildClient extends BaseLogging
   error: (err) ->
     @notify.error err.message
 
-  progress: (current, total) ->
-    @notify.progress
-      current: current
-      total: total
+  progress: (data) ->
+    @notify.progress data
 
   _onStartReceiver: (self) ->
     () ->

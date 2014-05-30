@@ -23,6 +23,7 @@ class ParentClient extends BaseLogging
       onScrollTopReceiver: @_onScrollTopReceiver(@)
       onPreviewReceiver: @_onPreviewReceiver(@)
       onProgressReceiver: @_onProgressReceiver(@)
+      onConfigProgressReceiver: @_onConfigProgressReceiver(@)
 
     @set 'iFrame', options.iFrame
     @set 'notify', notify
@@ -59,7 +60,11 @@ class ParentClient extends BaseLogging
 
   _onProgressReceiver: (self) ->
     (data) ->
-      self.onProgress(data.current, data.total)
+      self.onProgress(data)
+
+  _onConfigProgressReceiver: (self) ->
+    (data) ->
+      self.onConfigProgress(data)
 
   onSuccess: () ->
     @log new Exception 'onSuccess: Not implemented'
